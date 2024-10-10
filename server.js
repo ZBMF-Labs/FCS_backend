@@ -10,6 +10,10 @@ app.get('/hello', (req, res) => {
   res.send('Hello world!')
 })
 
+app.get('/', (req, res) => {
+  res.send('Hello ZBMFLabs!')
+})
+
 app.listen(PORT, () => {
   console.log(`Server running into port: ${PORT}`)
 })

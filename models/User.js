@@ -1,20 +1,20 @@
-'use strict'
+import { DataTypes } from 'sequelize'
 
-module.exports = {
-  async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('users', {
+export default (sequelize) => {
+  const User = sequelize.define(
+    'User',
+    {
       id: {
-        type: Sequelize.INTEGER,
-        primaryKey: true,
+        type: DataTypes.INTEGER,
         autoIncrement: true,
-        allowNull: false,
+        primaryKey: true,
       },
       name: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false,
       },
       email: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false,
         unique: true,
         validate: {
@@ -22,23 +22,14 @@ module.exports = {
         },
       },
       password: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false,
       },
-      createdAt: {
-        type: Sequelize.DATE,
-        allowNull: false,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
-      },
-      updatedAt: {
-        type: Sequelize.DATE,
-        allowNull: false,
-        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
-      },
-    })
-  },
+    },
+    {
+      timestamps: true,
+    },
+  )
 
-  async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('users')
-  },
+  return User
 }
