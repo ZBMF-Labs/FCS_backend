@@ -25,8 +25,9 @@
      GRANT ALL PRIVILEGES ON DATABASE nome_do_banco TO nome_do_usuario;
      ```
    
-2. **Configurar o arquivo `.env`** - Crie um arquivo `.env` na raiz do projeto e adicione as configurações de banco de dados. Por exemplo:
-   ```plaintext
+2. **Configurar o arquivo `.env`** 
+    - Crie um arquivo `.env` na raiz do projeto e adicione as configurações de banco de dados. Por exemplo:
+     ```plaintext
         DB_USERNAME_DEV=your_db_username
         DB_PASSWORD_DEV=your_db_password
         DB_DATABASE_DEV=your_db_name
@@ -40,7 +41,7 @@
         DB_DIALECT_PROD=your_db_dialect
 
         PORT=your_port
-   ```
+     ```
 
 ## Instalação do Projeto
 
