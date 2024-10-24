@@ -14,7 +14,7 @@ export default (sequelize) => {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-          model: 'USERS',
+          model: 'Users',
           key: 'id',
         },
         onUpdate: 'CASCADE',

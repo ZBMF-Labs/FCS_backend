@@ -2,7 +2,7 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('TRANSACTIONS', {
+    await queryInterface.createTable('Transactions', {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -13,7 +13,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: 'USERS',
+          model: 'Users',
           key: 'id',
         },
         onUpdate: 'CASCADE',
@@ -22,7 +22,7 @@ module.exports = {
       categoryId: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'CATEGORIES',
+          model: 'Categories',
           key: 'id',
         },
         onUpdate: 'CASCADE',
@@ -31,7 +31,7 @@ module.exports = {
       accountId: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'ACCOUNTS',
+          model: 'Accounts',
           key: 'id',
         },
         onUpdate: 'CASCADE',
@@ -40,7 +40,7 @@ module.exports = {
       typeId: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'TRANSACTION_TYPES',
+          model: 'Transaction_types',
           key: 'id',
         },
         onUpdate: 'CASCADE',
@@ -62,6 +62,6 @@ module.exports = {
   },
 
   down: async (queryInterface) => {
-    await queryInterface.dropTable('TRANSACTIONS')
+    await queryInterface.dropTable('Transactions')
   },
 }

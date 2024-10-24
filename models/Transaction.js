@@ -6,14 +6,14 @@ export default (sequelize) => {
     {
       id: {
         type: DataTypes.INTEGER,
-        autoincrement: true,
+        autoIncrement: true,
         primaryKey: true,
       },
       userId: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-          model: 'USER',
+          model: 'Users',
           key: 'id',
         },
         onUpdate: 'CASCADE',
@@ -22,7 +22,7 @@ export default (sequelize) => {
       categoryId: {
         type: DataTypes.INTEGER,
         references: {
-          model: 'CATEGORY',
+          model: 'Categories',
           key: 'id',
         },
         onUpdate: 'CASCADE',
@@ -31,7 +31,7 @@ export default (sequelize) => {
       accountId: {
         type: DataTypes.INTEGER,
         references: {
-          model: 'ACCOUNT',
+          model: 'Accounts',
           key: 'id',
         },
         onUpdate: 'CASCADE',
@@ -40,7 +40,7 @@ export default (sequelize) => {
       typeId: {
         type: DataTypes.INTEGER,
         references: {
-          model: 'TRANSACTION_TYPES',
+          model: 'Transaction_types',
           key: 'id',
         },
         onUpdate: 'CASCADE',

@@ -2,7 +2,7 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('TRANSACTION_TYPES', {
+    await queryInterface.createTable('Transaction_types', {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -17,10 +17,20 @@ module.exports = {
       description: {
         type: Sequelize.STRING(100),
       },
+      createdAt: {
+        type: Sequelize.DATE,
+        allowNull: false,
+        defaultValue: Sequelize.fn('NOW'),
+      },
+      updatedAt: {
+        type: Sequelize.DATE,
+        allowNull: false,
+        defaultValue: Sequelize.fn('NOW'),
+      },
     })
   },
 
   down: async (queryInterface) => {
-    await queryInterface.dropTable('TRANSACTION_TYPES')
+    await queryInterface.dropTable('Transaction_types')
   },
 }
