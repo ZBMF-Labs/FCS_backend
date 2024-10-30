@@ -25,6 +25,14 @@ export default (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      isEmailConfirmed: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
+      confirmationToken: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
     },
     {
       timestamps: true,

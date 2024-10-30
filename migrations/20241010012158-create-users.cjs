@@ -22,6 +22,14 @@ module.exports = {
         type: Sequelize.STRING(255),
         allowNull: false,
       },
+      isEmailConfirmed: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+      },
+      confirmationToken: {
+        type: Sequelize.STRING(255),
+        allowNull: true,
+      },
       createdAt: {
         type: Sequelize.DATE,
         allowNull: false,
