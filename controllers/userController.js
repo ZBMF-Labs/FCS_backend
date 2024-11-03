@@ -26,7 +26,15 @@ export const registerUser = async (req, res) => {
 
     const confirmationUrl = `${process.env.BASE_URL}/confirm-email?token=${token}`
 
-    await sendConfirmationEmail(email, confirmationUrl)
+    try {
+      await sendConfirmationEmail(email, confirmationUrl)
+    } catch (emailError) {
+      console.error('Erro ao enviar e-mail:', emailError)
+      return res.status(500).json({
+        message:
+          'Usuário cadastrado, mas não foi possível enviar o e-mail de confirmação.',
+      })
+    }
 
     return res.status(201).json({
       message: 'Usuário cadastrado com sucesso!',
