@@ -48,3 +48,28 @@ export const getCategories = async (req, res) => {
     return res.status(500).json({ messagem: 'Erro ao buscar categoria' })
   }
 }
+
+export const updateCategories = async (req, res) => {
+  try {
+    const { name } = req.body
+    const userId = req.user.userId
+    const { id } = req.params
+
+    const category = await Category.findOne({ where: { id, userId } })
+
+    console.log('Resultado da busca:', category)
+
+    if (!category) {
+      return res.status(404).json({ message: 'Categoria não encontrada.' })
+    }
+
+    category.name = name
+    await category.save()
+
+    return res
+      .status(200)
+      .json({ message: 'Categoria atualizada com sucesso!' })
+  } catch (error) {
+    return res.status(500).json({ message: 'Erro ao atualizar categoria!' })
+  }
+}
