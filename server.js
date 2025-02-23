@@ -25,11 +25,7 @@ db.sequelize
 
 app.use(express.json())
 
-app.get('/hello', (req, res) => {
-  res.send('Hello world!')
-})
-
-app.get('/', (req, res) => {
+app.get('/ZBMF', (req, res) => {
   res.send('Hello ZBMFLabs!')
 })
 
