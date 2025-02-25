@@ -27,13 +27,31 @@ export const createAccount = async (req, res) => {
   }
 }
 
-export const getAllAccount = async (req, res) => {
+export const getAllAccounts = async (req, res) => {
   try {
     const userId = req.user.userId
 
     const allAccounts = await Account.findAll({ where: { userId } })
 
     return res.status(201).json({ allAccounts })
+  } catch (error) {
+    return res.status(500).json(error)
+  }
+}
+
+export const getAccountById = async (req, res) => {
+  try {
+    const userId = req.user.userId
+    const { id } = req.params
+
+    const accountById = await Account.findOne({ where: { userId, id } })
+    console.log(accountById)
+
+    if (!accountById) {
+      return res.status(404).json({ message: 'Conta não encontrada!' })
+    }
+
+    return res.status(200).json(accountById)
   } catch (error) {
     return res.status(500).json(error)
   }
