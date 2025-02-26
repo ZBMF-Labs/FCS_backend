@@ -56,3 +56,23 @@ export const getAccountById = async (req, res) => {
     return res.status(500).json(error)
   }
 }
+
+export const updateAccount = async (req, res) => {
+  try {
+    const userId = req.user.userId
+    const { name, id } = req.body
+
+    const account = await Account.findOne({ where: { userId, id } })
+
+    if (!account) {
+      return res.status(404).json({ message: 'Conta não encontrada!' })
+    }
+
+    account.name = name
+
+    await account.save()
+    return res.status(201).json(account)
+  } catch (error) {
+    return res.status(500).json(error)
+  }
+}

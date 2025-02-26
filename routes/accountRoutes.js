@@ -4,6 +4,7 @@ import {
   createAccount,
   getAccountById,
   getAllAccounts,
+  updateAccount,
 } from '../controllers/accountController.js'
 
 const router = express.Router()
@@ -11,5 +12,6 @@ const router = express.Router()
 router.post('/', authenticateUser, createAccount)
 router.get('/', authenticateUser, getAllAccounts)
 router.get('/:id', authenticateUser, getAccountById)
+router.put('/', authenticateUser, updateAccount)
 
 export default router
