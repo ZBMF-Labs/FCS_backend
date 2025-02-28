@@ -2,6 +2,7 @@ import express from 'express'
 import { authenticateUser } from '../middlewares/authMiddleware.js'
 import {
   createAccount,
+  deleteAccont,
   getAccountById,
   getAllAccounts,
   updateAccount,
@@ -13,5 +14,6 @@ router.post('/', authenticateUser, createAccount)
 router.get('/', authenticateUser, getAllAccounts)
 router.get('/:id', authenticateUser, getAccountById)
 router.put('/', authenticateUser, updateAccount)
+router.delete('/:id', authenticateUser, deleteAccont)
 
 export default router

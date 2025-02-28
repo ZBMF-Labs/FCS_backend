@@ -76,3 +76,23 @@ export const updateAccount = async (req, res) => {
     return res.status(500).json(error)
   }
 }
+
+export const deleteAccont = async (req, res) => {
+  try {
+    const userId = req.user.userId
+
+    const { id } = req.params
+
+    const account = await Account.findOne({ where: { userId, id } })
+
+    if (!account) {
+      return req.status(404).json({ message: 'Conta não encontrada!' })
+    }
+
+    await account.destroy()
+
+    return res.status(201).json({ message: 'Conta deletada com sucesso!' })
+  } catch (error) {
+    return res.status(500).json(error)
+  }
+}
