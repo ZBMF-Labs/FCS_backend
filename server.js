@@ -3,6 +3,7 @@ import 'dotenv/config'
 import userRoutes from './routes/userRoutes.js'
 import emailRoutes from './routes/emailRoutes.js'
 import categoryRoutes from './routes/categoryRoutes.js'
+import accountRoutes from './routes/accountRoutes.js'
 
 import db from './models/index.js'
 
@@ -32,6 +33,7 @@ app.get('/ZBMF', (req, res) => {
 app.use('/', userRoutes)
 app.use('/', emailRoutes)
 app.use('/categories', categoryRoutes)
+app.use('/accounts', accountRoutes)
 
 app.listen(PORT, () => {
   console.log(`Server running into port: ${PORT}`)
